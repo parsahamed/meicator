@@ -1,0 +1,235 @@
+.dialog-backdrop {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+
+  .dialog {
+    width: 700px;
+    height: 700px;
+    background-color: rgb(33, 51, 59);
+    border-radius: 4px;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    color: rgb(241, 246, 248);
+    display: flex;
+    flex-direction: column;
+
+    .header {
+      flex: 0 0 60px;
+      display: flex;
+      padding: 0 16px;
+      align-items: center;
+
+      .title {
+        flex: 1;
+        font-size: 20px;
+        font-weight: 600;
+      }
+
+      .close {
+        flex: 0 0 40px;
+        color: rgb(241, 246, 248);
+        cursor: pointer;
+      }
+
+    }
+  }
+
+  .body {
+    padding: 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: stretch;
+    gap: 32px;
+
+    .form-row {
+      display: flex;
+      gap: 16px;
+    }
+
+    .form-control {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+
+      .control-label {
+        display: block;
+        color: rgb(227, 234, 237);
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 16px;
+        letter-spacing: -0.099996px;
+      }
+
+      .input {
+        margin: 0;
+        padding: 0;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        background: none;
+        height: 24px;
+        color: rgb(227, 234, 237);
+        border-bottom: rgb(174, 184, 188) solid 1px;
+        display: inline-block;
+        padding: 0 8px;
+        max-height: 24px;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: -0.099996px;
+        background: linear-gradient(to bottom, transparent 95%, var(--clr-forms-focused-color) 95%) no-repeat;
+      }
+
+      .input-error {
+        color: rgb(255, 77, 46)
+      }
+    }
+
+    .frequency-card {
+      flex: 1;
+      border: rgb(174, 184, 188) solid 1px;
+      padding: 0 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      border-radius: 4px;
+
+      .frequency-header {
+        flex: 0 0 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: rgb(174, 184, 188) solid 1px;
+      }
+
+      .frequency-days-part {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        gap: 16px;
+
+        .frequency-days {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+
+          .frequency-day {
+            width: 60px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: rgb(174, 184, 188) solid 1px;
+            cursor: pointer;
+          }
+
+          .frequency-day-selected {
+            background-color: rgb(46, 192, 255);
+            color: black;
+          }
+
+          .frequency-day-first {
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+          }
+
+          .frequency-day-last {
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+          }
+        }
+      }
+
+      .frequency-times {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        gap: 16px;
+
+        .frequency-time-row {
+          display: flex;
+          align-items: flex-start;
+          justify-content: center;
+          gap: 16px;
+
+          .frequency-time-input {}
+
+          .frequency-time-remove {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent;
+            border: 1px solid rgb(143, 21, 0);
+            color: rgb(143, 21, 0);
+            cursor: pointer;
+            border-radius: 4px;
+            height: 26px;
+            padding: 0 16px
+          }
+        }
+
+        .frequency-time-add {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: rgb(46, 192, 255);
+          color: black;
+          cursor: pointer;
+          border-radius: 4px;
+          height: 26px;
+          padding: 0 16px
+        }
+
+      }
+
+    }
+  }
+
+  .footer {
+    flex: 0 0 80px;
+    display: flex;
+    padding: 0 16px;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 32px;
+
+    .dialog-action {
+      flex: 0 0 80px;
+      border-radius: 4px;
+      height: 36px;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Metropolis, "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+      font-weight: 600;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .dialog-action-ok {
+      background-color: rgb(46, 192, 255);
+      color: black;
+    }
+
+    .dialog-action-cancel {
+      border: 1px solid rgb(46, 192, 255);
+      color: rgb(46, 192, 255);
+    }
+
+  }
+}

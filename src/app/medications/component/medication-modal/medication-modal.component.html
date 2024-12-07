@@ -1,0 +1,76 @@
+<div class="dialog-backdrop" (click)="close()">
+  <div class="dialog" (click)="$event.stopPropagation()">
+    <div class="header">
+      <div class="title">Add medication</div>
+      <div class="close" (click)="close()">
+        <svg viewBox="0 0 36 36" width="28" heigt="28" fill="white" xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true">
+          <path
+            d="M19.41 18.0003L26.7 10.7103C27.0398 10.3135 27.0169 9.72207 26.6476 9.3527C26.2782 8.98333 25.6868 8.96049 25.29 9.30026L18 16.5903L10.71 9.29026C10.3132 8.95049 9.72181 8.97333 9.35244 9.3427C8.98307 9.71207 8.96023 10.3035 9.30001 10.7003L16.59 18.0003L9.29001 25.2903C9.00463 25.5347 8.88032 25.9184 8.96819 26.2837C9.05607 26.649 9.34129 26.9342 9.70659 27.0221C10.0719 27.1099 10.4556 26.9856 10.7 26.7003L18 19.4103L25.29 26.7003C25.6868 27.04 26.2782 27.0172 26.6476 26.6478C27.0169 26.2785 27.0398 25.687 26.7 25.2903L19.41 18.0003Z">
+          </path>
+        </svg>
+      </div>
+    </div>
+    <form class="body" [formGroup]="medicationForm" (ngSubmit)="ok()">
+      <div class="form-row">
+        <div class="form-control">
+          <label for="name-input" class="control-label">Medication name</label>
+          <input type="text" id="name-input" formControlName="name" placeholder="Medication name" class="input">
+          <small class="input-error" *ngIf="name?.invalid">
+            Name must be at least 3 characters
+            long
+          </small>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-control">
+          <label for="dosage-input" class="control-label">Dosage</label>
+          <input type="text" id="dosage-input" formControlName="dosage" placeholder="Dosage" class="input">
+          <small class="input-error" *ngIf="dosage?.invalid">dosage must be greater than 0</small>
+        </div>
+        <div class="form-control">
+          <label for="unit-input" class="control-label">Unit</label>
+          <select id="unit" formControlName="unit" class="input">
+            <option value="">Select Unit</option>
+            <option *ngFor="let unit of units" [value]="unit">{{unit}}</option>
+          </select>
+          <small class="input-error" *ngIf="unit?.invalid">Unit is required</small>
+        </div>
+      </div>
+      <div class="frequency-card">
+        <div class="frequency-header">
+          Frequency
+        </div>
+        <div class="frequency-days-part">
+          <div class="frequency-days-title">Days</div>
+          <div class="frequency-days">
+            <div *ngFor="let day of allDays; index as index" [ngClass]="{
+            'frequency-day': true,
+            'frequency-day-selected': daySelected(day),
+            'frequency-day-first': index === 0,
+            'frequency-day-last': index === allDays.length - 1
+          }" (click)="toggleDay(day)">
+              {{ day }}
+            </div>
+          </div>
+
+        </div>
+        <div class="frequency-times">
+          <div class="frequency-times-title">Times</div>
+          <div *ngFor="let time of times.controls; index as i" class="frequency-time-row">
+            <input type="time" [formControl]="time" class="frequency-time-input" />
+            <button class="frequency-time-remove" type="button" (click)="removeTime(i)">Remove</button>
+          </div>
+          <button class="frequency-time-add" type="button" (click)="addTime('8:00')">Add Time</button>
+        </div>
+
+      </div>
+    </form>
+    <div class="footer">
+      <div class="dialog-action dialog-action-cancel" (click)="close()">Cancel</div>
+      <div class="dialog-action dialog-action-ok" (click)="ok()">Save</div>
+
+    </div>
+
+  </div>
+</div>
